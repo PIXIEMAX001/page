@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap');
+        body {
+            margin: 0;
+            background-color: #0a0a0a;
+            color: #ddd;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('bg_home.jpg') center/cover no-repeat fixed;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(transparent, #0a0a0a);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .title-image {
+            max-width: 90%;
+            max-height: 70vh;
+            object-fit: contain;
+            z-index: 2;
+        }
+        p.scroll-hint {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-top: 40px;
+            color: #777;
+            font-weight: 300;
+            z-index: 2;
+            transition: opacity 0.8s ease;
+        }
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            padding: 15px 30px;
+            background: rgba(10,10,10,0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transition: opacity 0.8s;
+            z-index: 100;
+        }
+        .navbar.visible { opacity: 1; }
+        .navbar a {
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-4px);
+        }
+        section {
+            min-height: 120vh;
+            padding: 150px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 80px;
+            color: #ccc;
+            letter-spacing: 0.1em;
+        }
+        .content-box {
+            max-width: 800px;
+            width: 100%;
+            padding: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            font-family: 'Consolas', monospace;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        #pages .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+        }
+        .link-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #aaa;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .link-item:hover {
+            color: #fff;
+            transform: translateY(-10px);
+        }
+        .link-item i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .link-item:hover i {
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 30px rgba(255,68,0,0.4);
+        }
+        #contact .contact-content {
+            font-size: 1.5rem;
+        }
+        #contact a { color: #fff; text-decoration: none; }
+        #contact i { font-size: 3rem; margin-bottom: 30px; }
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: #aaa;
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+        @media (max-width: 768px) {
+            .title-image { max-height: 50vh; }
+            .navbar { flex-wrap: wrap; gap: 10px; padding: 10px; top: 10px; }
+            section h2 { font-size: 2.5rem; }
+            .link-item i { font-size: 3rem; padding: 20px; width: 80px; height: 80px; }
+            #pages .links { gap: 30px; }
+            footer { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="TITLE_PMX.png" alt="PMX Title" class="title-image">
+        <p class="scroll-hint">scroll bruh</p>
+    </div>
+    <nav class="navbar" id="navbar">
+        <a href="#pages">Pages</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#other">Other</a>
+    </nav>
+    <section id="pages">
+        <h2>PAGES</h2>
+        <div class="links">
+            <a href="https://www.instagram.com/pixiemax001/" class="link-item" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://sketchfab.com/DarshyBarshy" class="link-item" target="_blank"><i class="fa-solid fa-cube"></i>Sketchfab</a>
+            <a href="https://soundcloud.com/isaygirlwhyyoukeepcallin" class="link-item" target="_blank"><i class="fab fa-soundcloud"></i>Soundcloud</a>
+            <a href="https://spotify.com" class="link-item" target="_blank"><i class="fab fa-spotify"></i>Spotify</a>
+            <a href="https://music.apple.com" class="link-item" target="_blank"><i class="fab fa-itunes-note"></i>Apple Music</a>
+            <a href="https://unsplash.com" class="link-item" target="_blank"><i class="fab fa-unsplash"></i>Unsplash</a>
+            <a href="https://github.com" class="link-item" target="_blank"><i class="fab fa-github"></i>Github</a>
+            <a href="https://linkedin.com" class="link-item" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+            <a href="https://ko-fi.com" class="link-item" target="_blank"><i class="fas fa-mug-hot"></i>Ko-fi</a>
+            <a href="buymeacoffee.com/Barshy" class="link-item" target="_blank"><i class="fas fa-coffee"></i>BuyMeACoffee</a>
+            <a href="https://www.paypal.com/paypalme/suchi2025" class="link-item" target="_blank"><i class="fab fa-paypal"></i>PayPal</a>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>CONTACT</h2>
+        <div class="contact-content">
+            <a href="mailto:rajsheshadri71@outlook.com"><i class="fas fa-envelope"></i></a>
+            <p>I'm @pixiemax001 on discord and insta, email is inconvenient</p>
+        </div>
+    </section>
+    <section id="about">
+        <h2>ABOUT</h2>
+        <div class="content-box">
+           I am stupid I have to change this about page. I do music and 3D and stuff. 
+        </div>
+    </section>
+    <section id="projects">
+        <h2>PROJECTS</h2>
+        <div class="content-box">
+            Not working on anything special rn. This may or may not be updated because it's an inconvenience, how do the music artists update their sites every time they have a new show? Cuz there's no way they manually add all these elements again and again for every new tour right? It's gotta be automated somehow. 
+        </div>
+    </section>
+    <section id="other">
+        <h2>OTHER</h2>
+        <div class="content-box">
+            Yeah idek what to put here bye bye twin have an awesome day
+        </div>
+    </section>
+    <footer>
+        (placeholder site) some of this was vibecoded I have to admit😪.<br>Gradual updates may come.
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+        const navbar = document.getElementById('navbar');
+        const hint = document.querySelector('.scroll-hint');
+        hint.style.opacity = '0';
+        hint.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+        hint.style.opacity = '0.7'; 
+    }, 7000);
+window.addEventListener('scroll', () => {
+            if (window.scrollY > window.innerHeight * 0.3) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            if (window.scrollY > 10) {
+                hint.style.opacity = '0';
+            } else {
+                hint.style.opacity = '0.7';
+            }
+        });
+    </script>
+</body>
+</html>
